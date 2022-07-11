@@ -60,16 +60,14 @@ else:
     st.text(" \n")
     st.text(" \n")
 
-
-
 st.header("Rationale")
 st.write("Texting is the most common use of smartphones. Experian found that adult mobile users aged 18 to 24 send more than 2,022 texts per month—on average, that's 67 per day—and receive 1,831. A couple of other factors make this a particularly insidious security threat.")
 st.write('Smishing is a portmanteau of "SMS" (short message services, better known as texting) and "phishing." When cybercriminals "phish," they send fraudulent emails that seek to trick the recipient into opening a malware-laden attachment or clicking on a malicious link. Smishing simply uses text messages instead of email.')
-st.write("Owing to these reasons it is of utmost importance to build an end-to-end system that can recognize and flag fraudlent spam messages. ")
+st.write("Owing to these reasons it is of utmost importance to build an end-to-end system that can recognize and flag fraudulent spam messages. ")
 
 
 st.header("Dataset")
-st.write("We will be using the 'SMS Spam Collection Dataset' to feed our model and predict outcomes. The SMS Spam Collection is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham (legitimate) or spam. The files contain one message per line. Each line is composed by two columns: v1 contains the label (ham or spam) and v2 contains the raw text.")
+st.write("We will be using the 'SMS Spam Collection Dataset' to feed our model and predict outcomes. The SMS Spam Collection is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged according being ham (legitimate) or spam. The files contain one message per line. Each line is composed by two columns: v1 contains the label (ham or spam) and v2 contains the raw text.")
 st.text("Code to transform csv to dataframes using pandas: ")
 code = '''df = pd.read_csv('spam.csv',encoding='latin1')'''
 
@@ -82,7 +80,7 @@ code = '''df.drop(columns=['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], inplace=Tr
 
 st.code(code, language='python')
 
-st.write("We will rename the colunms v1 to target and v2 to text for easier understanding.")
+st.write("We will rename the columns v1 to target and v2 to text for easier understanding.")
 code = '''df.rename(columns={'v1':'target', 'v2':'text'}, inplace=True)'''
 
 st.code(code, language='python')
@@ -175,7 +173,7 @@ st.write("We observe that multicollinearity is present in the data, we establish
 
 st.header("Data Preprocessing")
 
-st.write("We will convert all the text data into lowercase, then we will tokenize it using the nltk library. We can remove any special charaters and stop words from the data as they do not add any meaning to our model. Finally we will stem the data which will convert all words into their root form.")
+st.write("We will convert all the text data into lowercase, then we will tokenize it using the nltk library. We can remove any special characters and stop words from the data as they do not add any meaning to our model. Finally we will stem the data which will convert all words into their root form.")
 st.text("Function to transform the text: ")
 code = '''def transform_text(text):
     text = text.lower()
@@ -203,7 +201,7 @@ code = '''def transform_text(text):
 st.code(code, language='python')
 
 
-st.text("Code to apply tranform_text function to data frame:")
+st.text("Code to apply transform_text function to data frame:")
 code = '''df['transformed_text'] = df['text'].apply(transform_text)'''
 st.code(code, language='python')
 
@@ -248,7 +246,7 @@ st.image(image)
 
 st.write("Upon analysing these plots, we find that it will be most fruitful if we go for Multinomial Naive Bayes because it offers 100% Precision and 97% Accuracy. ")
 
-st.header("Imporving the model")
+st.header("Improving the model")
 
 st.subheader("Voting Classifier")
 st.write("Let's try to improvise the accuracy while maintaining the precision at 100%.")
